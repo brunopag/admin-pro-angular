@@ -1,0 +1,10 @@
+<h3 class="card-title">{{ leyenda }}</h3>
+<div class="input-group">
+    <span class="input-group-btn">
+        <button class="btn btn-primary" type="button"><i class="mdi mdi-minus" (click)="cambiarProgreso(-5)"></i></button>
+    </span>
+    <input #txtProgress type="number" class="form-control" placeholder="Product name" name="progreso" [(ngModel)]="progreso" (ngModelChange)="onChange($event)" min="0" max="100">
+    <span class="input-group-btn">
+        <button class="btn btn-primary" type="button"><i class="mdi mdi-plus" (click)="cambiarProgreso(+5)"></i></button>
+    </span>
+</div>

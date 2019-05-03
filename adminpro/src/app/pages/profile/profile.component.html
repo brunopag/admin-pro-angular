@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Perfil de usuario</h4>
+                <h6 class="card-subtitle">nombre del usuario</h6>
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="actualizarUsuario( f.value )" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">User Name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" [ngModel]="usuario.nombre" name="nombre" class="form-control" placeholder="Nombre Usuario" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input type="email" [ngModel]="usuario.email" [disabled]="usuario.google" name="email" class="form-control" placeholder="Email Usuario" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                      <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Foto de usuario</h4>
+                <h6 class="card-subtitle">nombre del usuario</h6>
+                <div align="center">
+                    <!-- Si esta seleccionada una imagen la muestro sino miestro la que ya tiene cargada el usuario -->
+                    <img *ngIf="!imagenTemp" src="{{ usuario.img | imagen }}" alt="" class="w-150" style="margin-bottom: 20px;text-align: center;">
+                    <img *ngIf="imagenTemp" src="{{ imagenTemp }}" alt="" class="w-150" style="margin-bottom: 20px;text-align: center;">
+
+                </div>
+
+                <input (change)="seleccionImagen($event.target.files[0])" type="file" style="margin-bottom: 20px;">
+
+                <button type="button" (click)="cambiarImagen()" [disabled]="!imagenSubir" class="btn btn-success waves-effect waves-light m-r-10 btn-block">
+                    <i class="fa fa-save"></i>
+                    Actualizar
+                  </button>
+            </div>
+        </div>
+    </div>
+</div>

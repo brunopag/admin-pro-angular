@@ -1,0 +1,28 @@
+<div class="black-background animated fadeIn" [ngClass]="_modalUploadService.hide">
+    <div class="modal" style="display: block;" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" (click)="_modalUploadService.hideModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <div align="center">
+                        <!-- Si esta seleccionada una imagen la muestro sino miestro la que ya tiene cargada el usuario -->
+                        <img *ngIf="!imagenTemp" src="{{ 'zzz' | imagen }}" alt="" class="w-150" style="margin-bottom: 20px;text-align: center;">
+                        <img *ngIf="imagenTemp" src="{{ imagenTemp }}" alt="" class="w-150" style="margin-bottom: 20px;text-align: center;">
+
+                    </div>
+
+                    <input (change)="seleccionImagen($event.target.files[0])" type="file" style="margin-bottom: 20px;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="_modalUploadService.hideModal()">Cerrar</button>
+                    <button type="button" class="btn btn-primary" (click)="cambiarImagen()">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
